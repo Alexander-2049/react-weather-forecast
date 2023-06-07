@@ -1,7 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import languageDetector from './languageDetector';
-import translations from './translations.json';
+import languageConverter from './languageConverter';
+import translationEN from './locales/en/translation.json';
+import translationRU from './locales/ru/translation.json';
 
 // Receiving language from localstorage
 const savedLanguage = localStorage.getItem('language');
@@ -10,7 +11,7 @@ const clientLanguage = navigator.language || navigator.userLanguage;
 
 // Setting language variable that is gonna be used on webpage load
 let language = savedLanguage || clientLanguage;
-    language = languageDetector(language);
+    language = languageConverter(language);
 // Writing html lang="" attribute
 document.documentElement.setAttribute('lang', language);
 
@@ -19,11 +20,16 @@ if(!savedLanguage) {
     localStorage.setItem('language', language);
 }
 
+export const languages = ["en", "ru"];
+
 // Setting up i18next
 i18n
   .use(initReactI18next)
   .init({
-    resources: translations,
+    resources: {
+      "en": translationEN,
+      "ru": translationRU
+    },
     lng: language,
     fallbackLng: 'en',
 
@@ -34,8 +40,8 @@ i18n
 
 // On language update changing html lang="" and writing updated language to localstorage
 i18n.on('languageChanged', (lng) => {
-    document.documentElement.setAttribute('lang', languageDetector(lng));
-    localStorage.setItem('language', languageDetector(lng));
+    document.documentElement.setAttribute('lang', languageConverter(lng));
+    localStorage.setItem('language', languageConverter(lng));
 });
 
 export default i18n;

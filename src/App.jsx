@@ -1,12 +1,13 @@
-import Weather from "./components/Weather"
-import I18nExample from "./components/i18nExample"
+import WeatherWrapper from "./components/WeatherWrapper"
+import SelectLanguage from "./components/SelectLanguage"
+import { Container } from "@mui/system"
 
 function App() {
 
   return (
     <>
-      <Weather/>
-      <I18nExample/>
+      <Container sx={{marginY: 8}} maxWidth="lg"><SelectLanguage/></Container>
+      <Container sx={{marginY: 8}} maxWidth="lg"><WeatherWrapper/></Container>
     </>
   )
 }

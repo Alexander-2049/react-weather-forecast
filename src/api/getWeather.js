@@ -9,7 +9,8 @@ async function getWeather(latitude, longitude) {
     } catch (error) {
       // Handle error
       // You can choose to rethrow the error or handle it specifically for the weather request
-      throw error;
+      // throw error;
+      console.warn(error);
     }
   }
 

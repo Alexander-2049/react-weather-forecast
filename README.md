@@ -1,0 +1,1 @@
+HTML, CSS, JavaScript, Vite, React, SASS, MUI (Material UI), axios, i18next, react-query

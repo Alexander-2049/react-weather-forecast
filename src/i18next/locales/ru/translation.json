@@ -1,0 +1,10 @@
+{
+    "translation": {
+      "greeting": "Здарова",
+      "buttonLabel": "Нажми сюда",
+      "Loading": "Загрузка",
+      "Get geolocation": "Получить геолокацию",
+      "My city": "Мой город",
+      "Weather in my city": "Погода в моём городе"
+    }
+}

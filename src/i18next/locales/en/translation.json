@@ -1,0 +1,10 @@
+{
+    "translation": {
+      "greeting": "Hello",
+      "buttonLabel": "Click me",
+      "Loading": "Loading",
+      "Get geolocation": "Get geolocation",
+      "My city": "My city",
+      "Weather in my city": "Weather in my city"
+    }
+}
