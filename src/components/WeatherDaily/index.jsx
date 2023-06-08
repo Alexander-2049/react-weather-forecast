@@ -1,4 +1,3 @@
-import { Navigation, Pagination, A11y } from 'swiper';
 import PropTypes from 'prop-types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -45,7 +44,10 @@ const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
             onSwiper={(/* swiper */) => handleSlideToIndex(selectedDayIndex)}
             onSlideChange={handleOnSlideChange}
             >
-                {days.map(e => <SwiperSlide key={e.time}><Item data={e}/></SwiperSlide>)}
+                {days.map(e => 
+                    <SwiperSlide key={e.time}>
+                        <Item data={e}/>
+                    </SwiperSlide>)}
             </Swiper>
         </div>
     );

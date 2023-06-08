@@ -1,4 +1,3 @@
-import styles from './item.styles.module.scss';
 import PropTypes from 'prop-types';
 import TemperatureChart from '../../TemperatureChart';
 import dateToFormatHM from '../../../utils/dateToFormatHM';
@@ -17,9 +16,7 @@ const WeatherDays_Item = ({data}) => {
     const chartData = useMemo(() => buildChartData(data), [data]);
 
     return (
-        <div className={styles.wrapper}>
-            <TemperatureChart width={552} chartData={chartData}/>
-        </div>
+        <TemperatureChart chartData={chartData}/>
     );
 };
 
