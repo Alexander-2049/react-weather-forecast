@@ -5,6 +5,8 @@
       "Loading": "Loading",
       "Get geolocation": "Get geolocation",
       "My city": "My city",
-      "Weather in my city": "Weather in my city"
+      "Weather in my city": "Weather in my city",
+      "from": "from",
+      "to": "to"
     }
 }

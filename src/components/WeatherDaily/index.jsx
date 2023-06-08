@@ -9,7 +9,7 @@ import 'swiper/css/scrollbar';
 import Item from './Item/Item';
 import { useRef } from 'react';
 
-const WeatherDaily = ({weatherData}) => {
+const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
 
     const swiperRef = useRef(null);
 
@@ -19,20 +19,24 @@ const WeatherDaily = ({weatherData}) => {
         }
     };
 
-    const arr = [1, 2, 3, 4, 5];
+    const handleOnSlideChange = (e) => {
+        // When we are swiping slides the whole weather component sees selected day changing
+        setSelectedDayIndex(e.activeIndex);
+    }
+
+    // const arr = [1, 2, 3, 4, 5];
+
+    if(!days) return;
 
     return (
         <Swiper ref={swiperRef}
-        modules={[Navigation, Pagination, A11y]}
-        spaceBetween={50}
+        modules={[]}
+        spaceBetween={16}
         slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        onSwiper={(/* swiper */) => handleSlideToIndex(selectedDayIndex)}
+        onSlideChange={handleOnSlideChange}
         >
-            {arr.map(e => <SwiperSlide key={e}><Item data={e}/></SwiperSlide>)}
+            {days.map(e => <SwiperSlide key={e.time}><Item data={e}/></SwiperSlide>)}
         </Swiper>
     );
 };
@@ -42,7 +46,9 @@ WeatherDaily.propTypes = {
     //     latitude: PropTypes.number,
     //     longitude: PropTypes.number
     // })
-    weatherData: PropTypes.object
+    days: PropTypes.array,
+    selectedDayIndex: PropTypes.number,
+    setSelectedDayIndex: PropTypes.func
 }
 
 export default WeatherDaily;

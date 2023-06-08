@@ -5,6 +5,8 @@
       "Loading": "Загрузка",
       "Get geolocation": "Получить геолокацию",
       "My city": "Мой город",
-      "Weather in my city": "Погода в моём городе"
+      "Weather in my city": "Погода в моём городе",
+      "from": "от",
+      "to": "до"
     }
 }
