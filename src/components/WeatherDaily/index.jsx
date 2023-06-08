@@ -8,9 +8,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Item from './Item/Item';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
 
+    const { t } = useTranslation();
     const swiperRef = useRef(null);
 
     const handleSlideToIndex = (index) => {
@@ -30,20 +32,22 @@ const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
         }
     }, [selectedDayIndex])
 
-    // const arr = [1, 2, 3, 4, 5];
-
     if(!days) return;
 
     return (
-        <Swiper ref={swiperRef}
-        modules={[]}
-        spaceBetween={0}
-        slidesPerView={1}
-        onSwiper={(/* swiper */) => handleSlideToIndex(selectedDayIndex)}
-        onSlideChange={handleOnSlideChange}
-        >
-            {days.map(e => <SwiperSlide key={e.time}><Item data={e}/></SwiperSlide>)}
-        </Swiper>
+        <div>
+            <h2>{t('from')} {`${days[selectedDayIndex].temperature_2m_min}°C`} {t('to')} {`${days[selectedDayIndex].temperature_2m_max}°C`}</h2>
+            <h3>{new Date(days[selectedDayIndex].time).toLocaleDateString()}</h3>
+            <Swiper ref={swiperRef}
+            modules={[]}
+            spaceBetween={0}
+            slidesPerView={1}
+            onSwiper={(/* swiper */) => handleSlideToIndex(selectedDayIndex)}
+            onSlideChange={handleOnSlideChange}
+            >
+                {days.map(e => <SwiperSlide key={e.time}><Item data={e}/></SwiperSlide>)}
+            </Swiper>
+        </div>
     );
 };
 

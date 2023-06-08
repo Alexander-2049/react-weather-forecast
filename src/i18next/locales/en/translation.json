@@ -7,6 +7,13 @@
       "My city": "My city",
       "Weather in my city": "Weather in my city",
       "from": "from",
-      "to": "to"
+      "to": "to",
+      "M": "Mon",
+      "T": "Tue",
+      "W": "Wed",
+      "R": "Thu",
+      "F": "Fri",
+      "S": "Sat",
+      "U": "Sun"
     }
 }

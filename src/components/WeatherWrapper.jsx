@@ -21,7 +21,7 @@ const Weather = () => {
         return data;
     }
 
-    const { data: weatherData, isLoading, /* isError */ } = useQuery(queryName, fetchWeatherData);
+    const { data: weatherData, isLoading, /* isError */ } = useQuery(queryName, fetchWeatherData, { refetchOnWindowFocus: false });
 
     const [days, setDays] = useState(null);
 
@@ -48,15 +48,16 @@ const Weather = () => {
         setDays(result);
       }, [weatherData]);
 
+      useEffect(() => {
+        setSelectedDayIndex(0);
+      }, [weatherData])
+
     return (
         <>
-
             <Box sx={{marginY: 2}}><GetUserCoordinates geoData={geoData} setGeoData={setGeoData}/></Box>
             <Box sx={{marginY: 2}}><WeatherPosition geoData={geoData}/></Box>
             <WeatherDaily days={days} selectedDayIndex={selectedDayIndex} setSelectedDayIndex={setSelectedDayIndex}/>
             <WeatherDayList days={days} selectedDayIndex={selectedDayIndex} setSelectedDayIndex={setSelectedDayIndex}/>
-            {/* <code>{JSON.stringify(geoData)}</code> */}
-            {/* {weatherData ? <code>{JSON.stringify(weatherData)}</code> : ''} */}
         </>
     );
 };
