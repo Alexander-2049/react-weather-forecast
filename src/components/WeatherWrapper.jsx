@@ -3,6 +3,9 @@ import { useQuery } from 'react-query';
 import getWeather from '../api/getWeather';
 import WeatherDaily from "./WeatherDaily"
 import GetUserCoordinates from './GetUserCoordinates';
+import { Box } from '@mui/material';
+import WeatherPosition from './WeatherPosition';
+import WeatherDayList from './WeatherDayList';
 // import getDescriptionByCode from '../utils/getDescriptionByCode';
 
 const Weather = () => {
@@ -47,8 +50,11 @@ const Weather = () => {
 
     return (
         <>
-            <GetUserCoordinates geoData={geoData} setGeoData={setGeoData}/>
+
+            <Box sx={{marginY: 2}}><GetUserCoordinates geoData={geoData} setGeoData={setGeoData}/></Box>
+            <Box sx={{marginY: 2}}><WeatherPosition geoData={geoData}/></Box>
             <WeatherDaily days={days} selectedDayIndex={selectedDayIndex} setSelectedDayIndex={setSelectedDayIndex}/>
+            <WeatherDayList days={days} selectedDayIndex={selectedDayIndex} setSelectedDayIndex={setSelectedDayIndex}/>
             {/* <code>{JSON.stringify(geoData)}</code> */}
             {/* {weatherData ? <code>{JSON.stringify(weatherData)}</code> : ''} */}
         </>

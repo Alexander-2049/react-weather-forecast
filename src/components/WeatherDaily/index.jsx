@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Item from './Item/Item';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
 
@@ -24,6 +24,12 @@ const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
         setSelectedDayIndex(e.activeIndex);
     }
 
+    useEffect(() => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+          swiperRef.current.swiper.slideTo(selectedDayIndex);
+        }
+    }, [selectedDayIndex])
+
     // const arr = [1, 2, 3, 4, 5];
 
     if(!days) return;
@@ -31,7 +37,7 @@ const WeatherDaily = ({days, selectedDayIndex, setSelectedDayIndex}) => {
     return (
         <Swiper ref={swiperRef}
         modules={[]}
-        spaceBetween={16}
+        spaceBetween={0}
         slidesPerView={1}
         onSwiper={(/* swiper */) => handleSlideToIndex(selectedDayIndex)}
         onSlideChange={handleOnSlideChange}
