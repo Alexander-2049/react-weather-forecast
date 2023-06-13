@@ -7,8 +7,8 @@ function App() {
 
   return (
     <>
-      <Container sx={{marginY: 8}} maxWidth="sm"><SelectLanguage/></Container>
-      <Container sx={{marginY: 8}} maxWidth="sm"><WeatherWrapper/></Container>
+      <Container sx={{marginY: 8}} maxWidth="md"><SelectLanguage/></Container>
+      <Container sx={{marginY: 8}} maxWidth="md"><WeatherWrapper/></Container>
     </>
   )
 }

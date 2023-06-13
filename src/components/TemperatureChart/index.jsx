@@ -2,7 +2,7 @@ import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'rec
 
 const TemperatureChart = ({chartData}) => {
   return (
-    <ResponsiveContainer width="100%" aspect={3}>
+    <ResponsiveContainer width="100%" height={160}>
       <AreaChart data={chartData}
         margin={{ top: 0, right: 60, left: 0, bottom: 0 }}>
         <defs>
